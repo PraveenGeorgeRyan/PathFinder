@@ -1,0 +1,94 @@
+Always start your reply with "Boss 🫡"
+
+build:
+  - npm run build
+serve:
+  - npm start
+
+## Project Context
+This is an Angular 18 application that handles optional URL parameters for filtering data based on city, program, and category with the URL structure:
+```
+DOMAIN.COM/CITY-NAME/PROGRAM-NAME/CATEGORY-NAME
+```
+
+## Important Rules
+- Always use Angular CLI for generating components, services, and modules
+- Follow Angular best practices for routing and parameter handling
+- Use Angular Signals for state management
+- Implement proper error handling and validation
+
+## File Structure
+├── README.md
+├── src
+│   ├── app
+│   │   ├── components
+│   │   ├── models
+│   │   ├── services
+│   │   ├── pages
+│   │   └── shared
+│   ├── assets
+│   └── environments
+
+## Tech Stack
+- Angular 18
+- TypeScript
+- RxJS
+- Angular Signals
+- Angular Material (optional)
+- SCSS
+
+## Git Usage
+Commit Message Prefixes:
+- "fix:" for bug fixes
+- "feat:" for new features
+- "perf:" for performance improvements
+- "docs:" for documentation changes
+- "style:" for formatting changes
+- "refactor:" for code refactoring
+- "test:" for adding missing tests
+- "chore:" for maintenance tasks
+
+## Code Style and Structure
+- Write concise, technical TypeScript code with accurate examples
+- Use Angular services for data handling and business logic
+- Implement proper dependency injection
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError)
+
+## Naming Conventions
+- Use kebab-case for component selectors (e.g., app-city-list)
+- Use PascalCase for class names (e.g., CityService)
+- Use camelCase for properties and methods
+- Use descriptive names for components, services, and modules
+
+## TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types
+- Define models for all data structures
+- Use proper typing for all variables, parameters, and return values
+- Avoid any type when possible
+
+## State Management
+- Use Angular Signals for reactive state management
+- Implement proper cleanup in component lifecycle hooks
+- Use services for shared state
+
+## Syntax and Formatting
+- Follow Angular style guide
+- Use proper indentation (2 spaces)
+- Use semicolons at the end of statements
+- Use single quotes for strings
+
+## UI and Styling
+- Use SCSS for styling
+- Consider implementing Angular Material for UI components
+- Create responsive layouts
+
+## Error Handling
+- Implement proper error handling for HTTP requests
+- Use route guards for validation
+- Provide user-friendly error messages
+- Handle network failures gracefully
+
+## Security
+- Sanitize user inputs
+- Implement proper route guards
+- Handle sensitive data properly

@@ -1,0 +1,202 @@
+// Import variables from app component
+$primary-color: #6772e5;
+$secondary-color: #32325d;
+$accent-color: #24b47e;
+$light-color: #f6f9fc;
+$dark-color: #32325d;
+$text-color: #525f7f;
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Hero section
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, rgba(103, 114, 229, 0.1), rgba(155, 89, 182, 0.1));
+  border-radius: 12px;
+  animation: fadeIn 0.8s ease-out;
+  
+  h1 {
+    font-size: 2.8rem;
+    color: $secondary-color;
+    margin-bottom: 20px;
+    font-weight: 700;
+    background: linear-gradient(to right, $primary-color, #9b59b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .subtitle {
+    font-size: 1.3rem;
+    color: $text-color;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+}
+
+// Cities section
+.cities-container {
+  margin-bottom: 60px;
+  animation: fadeIn 1s ease-out;
+  
+  h2 {
+    text-align: center;
+    color: $secondary-color;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.city-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.08);
+    
+    .view-btn {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
+
+.city-card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: $text-color;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    flex-grow: 1;
+  }
+  
+  .view-btn {
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    color: $primary-color;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
+// Features section
+.features-section {
+  margin-bottom: 60px;
+  animation: fadeIn 1.2s ease-out;
+  
+  h2 {
+    text-align: center;
+    color: $secondary-color;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    
+    .feature-icon {
+      transform: scale(1.1);
+    }
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+  }
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: $text-color;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 20px;
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .features-grid, .city-grid {
+    grid-template-columns: 1fr;
+  }
+}

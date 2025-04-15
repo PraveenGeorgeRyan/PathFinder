@@ -1,0 +1,124 @@
+// Modern color palette
+$primary-color: #6772e5;
+$secondary-color: #32325d;
+$accent-color: #24b47e;
+$light-color: #f6f9fc;
+$dark-color: #32325d;
+$text-color: #525f7f;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: $text-color;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// Header styles
+.app-header {
+  background: linear-gradient(135deg, #6772e5, #9b59b6);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #fff, #e0e0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+// Main content styles
+.app-content {
+  flex: 1;
+  padding: 40px 0;
+  background-color: $light-color;
+}
+
+// Footer styles
+.app-footer {
+  background-color: $secondary-color;
+  padding: 2rem 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+    
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .header-content, .footer-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .main-nav {
+    width: 100%;
+    justify-content: center;
+  }
+}

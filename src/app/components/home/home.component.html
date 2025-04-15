@@ -1,0 +1,42 @@
+<div class="home-container">
+  <div class="hero-section">
+    <h1>Smart Route Parameter Handling</h1>
+    <p class="subtitle">Navigate through dynamic routes with ease using PathFinder's intelligent parameter handling</p>
+  </div>
+  
+  <div class="cities-container">
+    <h2>Select a City to Explore</h2>
+    <div class="city-grid">
+      @for (city of cities; track city.id) {
+        <a [routerLink]="['/', city.slug]" class="city-card">
+          <div class="city-card-content">
+            <h3>{{ city.name }}</h3>
+            <p>Explore programs in {{ city.name }}</p>
+            <span class="view-btn">View Programs</span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+  
+  <div class="features-section">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Smart Filtering</h3>
+        <p>Filter programs by city, category, or specific program name</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Dynamic Routing</h3>
+        <p>Navigate through optional URL parameters with ease</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Reactive Updates</h3>
+        <p>UI updates instantly as you navigate through different parameters</p>
+      </div>
+    </div>
+  </div>
+</div>

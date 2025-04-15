@@ -1,0 +1,74 @@
+<div class="program-list-container">
+  <div class="page-header">
+    <h1>
+      @if (cityName()) {
+        Programs in {{ cityName() }}
+        @if (categoryName()) {
+          - {{ categoryName() }}
+        }
+        @if (programName()) {
+          - {{ programName() }}
+        }
+      }
+    </h1>
+    <a routerLink="/" class="back-button">Back to Home</a>
+  </div>
+
+  @if (hasFilters()) {
+    <div class="filters-section">
+      <div class="breadcrumbs">
+        <a routerLink="/">Home</a> &gt;
+        <a [routerLink]="['/', citySlug()]">{{ cityName() }}</a>
+        @if (programSlug()) {
+          &gt; <a [routerLink]="['/', citySlug(), programSlug()]">{{ programName() }}</a>
+        }
+        @if (categorySlug()) {
+          &gt; <a [routerLink]="['/', citySlug(), programSlug(), categorySlug()]">{{ categoryName() }}</a>
+        }
+      </div>
+      
+      @if (!programSlug() && categories().length > 0) {
+        <div class="category-filters">
+          <h3>Filter by Category</h3>
+          <div class="category-list">
+            @for (category of categories(); track category.id) {
+              <a [routerLink]="['/', citySlug(), '', category.slug]" class="category-tag">
+                {{ category.name }}
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (programs().length > 0) {
+    <div class="programs-grid">
+      @for (program of programs(); track program.id) {
+        <div class="program-card">
+          <div class="program-card-content">
+            <h2>{{ program.name }}</h2>
+            <p class="description">{{ program.description }}</p>
+            <div class="program-footer">
+              <span class="category-badge">
+                {{ getCategoryName(program.categoryId) }}
+              </span>
+              <a [routerLink]="['/', citySlug(), program.slug]" class="view-details-btn">
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="no-programs">
+      <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3>No Programs Found</h3>
+        <p>No programs match the current filters.</p>
+        <a routerLink="/" class="back-button">Return to Home</a>
+      </div>
+    </div>
+  }
+</div>
