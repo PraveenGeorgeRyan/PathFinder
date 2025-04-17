@@ -110,13 +110,7 @@ export class DataService {
   filterPrograms(citySlug?: string, programSlug?: string, categorySlug?: string): Program[] {
     let filteredPrograms = this.programs;
     
-    // If we have a specific program slug, just return that program
-    if (programSlug) {
-      const program = this.getProgramBySlug(programSlug);
-      return program ? [program] : [];
-    }
-    
-    // Filter by city if provided
+    // First, filter by city if provided
     if (citySlug) {
       const city = this.getCityBySlug(citySlug);
       if (city) {
@@ -126,7 +120,17 @@ export class DataService {
       }
     }
     
-    // Filter by category if provided
+    // Then, filter by program if provided
+    if (programSlug) {
+      const program = this.getProgramBySlug(programSlug);
+      if (program && filteredPrograms.some(p => p.id === program.id)) {
+        filteredPrograms = [program];
+      } else {
+        return []; // Program not found or not in the filtered set, return empty array
+      }
+    }
+    
+    // Finally, filter by category if provided
     if (categorySlug) {
       const category = this.getCategoryBySlug(categorySlug);
       if (category) {

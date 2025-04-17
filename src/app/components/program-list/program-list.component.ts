@@ -42,7 +42,7 @@ export class ProgramListComponent implements OnInit {
       this.categorySlug.set(category);
       
       // Validate the URL parameters
-      if (city && !this.validationService.validateUrlParameters(city, program, category)) {
+      if (!this.validateParameters(city, program, category)) {
         // If invalid, redirect to 404 page
         this.router.navigate(['/not-found']);
         return;
@@ -111,5 +111,18 @@ export class ProgramListComponent implements OnInit {
    */
   hasFilters(): boolean {
     return !!this.citySlug();
+  }
+
+  /**
+   * Validate all URL parameters
+   */
+  private validateParameters(city: string, program?: string, category?: string): boolean {
+    // Empty city is invalid - we always need at least a city
+    if (!city) {
+      return false;
+    }
+    
+    // Use validation service to validate parameter combination
+    return this.validationService.validateUrlParameters(city, program, category);
   }
 }

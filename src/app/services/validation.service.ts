@@ -76,27 +76,46 @@ export class ValidationService {
    * @returns True if the combination is valid, false otherwise
    */
   validateUrlParameters(citySlug: string, programSlug?: string, categorySlug?: string): boolean {
-    // First check if city is valid
-    if (!this.isCityValid(citySlug)) {
+    // First check if city is valid - this is always required
+    if (!citySlug || !this.isCityValid(citySlug)) {
       return false;
     }
     
-    // If program is provided, check if it's valid and belongs to the city
+    // If program is provided, validate it exists and belongs to the city
     if (programSlug) {
-      if (!this.isProgramValid(programSlug) || !this.isProgramInCity(citySlug, programSlug)) {
+      if (!this.isProgramValid(programSlug)) {
+        return false;
+      }
+      
+      // Check if program belongs to the specified city
+      if (!this.isProgramInCity(citySlug, programSlug)) {
         return false;
       }
     }
     
-    // If category is provided, check if it's valid
+    // If category is provided, validate it exists
     if (categorySlug) {
       if (!this.isCategoryValid(categorySlug)) {
         return false;
       }
       
-      // If both program and category are provided, check if program belongs to category
-      if (programSlug && !this.isProgramInCategory(categorySlug, programSlug)) {
-        return false;
+      // If both program and category are provided, check program belongs to category
+      if (programSlug) {
+        if (!this.isProgramInCategory(categorySlug, programSlug)) {
+          return false;
+        }
+      } else {
+        // If only category is provided (no program), check if any program in the city belongs to this category
+        const city = this.dataService.getCityBySlug(citySlug);
+        const programs = this.dataService.programs.filter(p => p.cityId === city?.id);
+        const categoryHasPrograms = programs.some(p => {
+          const category = this.dataService.getCategoryBySlug(categorySlug);
+          return p.categoryId === category?.id;
+        });
+        
+        if (!categoryHasPrograms) {
+          return false; // Category exists but has no programs in this city
+        }
       }
     }
     
